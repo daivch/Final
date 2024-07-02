@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- enlace a estilos -->
+    <link rel="stylesheet" href="./static/css/styles.css">
+
+    <!-- Favicon de la página -->
+    <link rel="icon" type="image/fx-icon" href="./static/imagenes/Logo.png">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Sacramento&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic" rel="stylesheet"
+        type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700" rel="stylesheet" type="text/css">
+
+    <!-- Font Awesome icons -->
+    <script src="https://kit.fontawesome.com/6e76b34b0b.js" crossorigin="anonymous"></script>
+
+    <title>Belu Melamed - La Pastelería</title>
+</head>
+
+<body>
+    <header class="header">
+        <nav class="nav-bar">
+            <ul class="nav-bar-links">
+                <li>
+                    <a href="index.html">
+                        <img class="logo-nav" src="img/logo-nav.png" alt="">
+                    </a>
+                </li>
+                <li>
+                    <a href="index.html" class="nav-link">Inicio</a>
+                    <a href="index.html" class="nav-logo-link">
+                        <img src="img/home-logo.svg" alt="" class="nav-logo">
+                    </a>
+                </li>
+                <li>
+                    <a href="hacerpedido.html" class="nav-link">Hacé tu pedido</a>
+                    <a href="hacerpedido.html" class="nav-logo-link">
+                        <img src="img/pedido-logo.svg" alt="" class="nav-logo">
+                    </a>
+                </li>
+                <li>
+                    <a href="productos.html" class="nav-link">Productos</a>
+                    <a href="productos.html" class="nav-logo-link">
+                        <img src="img/products-logo.svg" alt="" class="nav-logo">
+                    </a>
+                </li>
+                <li>
+                    <a href="nosotros.html" class="nav-link">Nosotros</a>
+                    <a href="nosotros.html" class="nav-logo-link">
+                        <img src="img/sobre-nosotros-logo.svg" alt="" class="nav-logo">
+                    </a>
+                </li>
+                <li>
+                    <a href="contacto.html" class="nav-link">Contacto</a>
+                    <a href="contacto.html" class="nav-logo-link">
+                        <img src="img/contacto-logo.svg" alt="" class="nav-logo">
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+
+        <!-- Pastelería-->
+        <div class="marca">Belu Melamed</div>
+        <div class="subtitulo">LA PASTELERIA</div>
+
+    </div>
+    <h1>Listado de Productos de la Pastelería</h1><br>
+
+    <table> <!-- Se crea una tabla para mostrar los productos. -->
+        <thead> <!--Encabezado de la tabla con columnas para código, descripción, cantidad, precio y acciones.-->
+            <tr>
+                <th>Código</th>
+                <th>Descripción</th>
+                <th>Cantidad</th>                
+                <th align="right">Precio</th>
+                <th>Imagen</th>
+                
+            </tr>
+        </thead>
+        <tbody id="tablaProductos"> </tbody>
+    </table><br>
+
+    <div class="contenedor-centrado">
+        <a href="Admin.html">Menu principal</a>
+    </div>
+
+    <script>
+        //const URL = "http://127.0.0.1:5000/"
+
+        // Al subir al servidor, deberá utilizarse la siguiente ruta. USUARIO debe ser reemplazado por el nombre de usuario de Pythonanywhere
+        const URL = "https://Grupo10CAC.pythonanywhere.com/"
+        
+
+        // Realizamos la solicitud GET al servidor para obtener todos los productos.
+        fetch(URL + 'productos')
+            .then(function (response) {
+                if (response.ok) {
+                    //Si la respuesta es exitosa (response.ok), convierte el cuerpo de la respuesta de formato JSON a un objeto JavaScript y pasa estos datos a la siguiente promesa then.
+                    return response.json(); 
+            } else {
+                    // Si hubo un error, lanzar explícitamente una excepción para ser "catcheada" más adelante
+                    throw new Error('Error al obtener los productos.');
+                }
+            })
+
+            //Esta función maneja los datos convertidos del JSON.
+            .then(function (data) {
+                let tablaProductos = document.getElementById('tablaProductos'); //Selecciona el elemento del DOM donde se mostrarán los productos.
+
+                // Iteramos sobre cada producto y agregamos filas a la tabla
+                for (let producto of data) {
+                    let fila = document.createElement('tr'); //Crea una nueva fila de tabla (<tr>) para cada producto.
+                    fila.innerHTML = '<td>' + producto.codigo + '</td>' +
+                        '<td>' + producto.descripcion + '</td>' +
+                        '<td align="right">' + producto.cantidad + '</td>' +
+                        '<td align="right">' + producto.precio + '</td>' +
+                        // Mostrar miniatura de la imagen
+                        //'<td><img src=./static/imagenes/' + producto.imagen_url +' alt="Imagen del producto" style="width: 100px;"></td>' + '<td align="right">' + '</td>';
+                        
+                        //Al subir al servidor, deberá utilizarse la siguiente ruta. USUARIO debe ser reemplazado por el nombre de usuario de Pythonanywhere
+                        '<td><img src=https://www.pythonanywhere.com/user/Grupo10CAC/files/home/Grupo10CAC/mysite/static/imagenes/' + producto.imagen_url +' alt="Imagen del producto" style="width: 100px;"></td>' + '<td align="right">' + '</td>';
+                    
+                    //Una vez que se crea la fila con el contenido del producto, se agrega a la tabla utilizando el método appendChild del elemento tablaProductos.
+                    tablaProductos.appendChild(fila);
+                }
+            })
+
+            //Captura y maneja errores, mostrando una alerta en caso de error al obtener los productos.
+            .catch(function (error) {
+                // Código para manejar errores
+                alert('Error al obtener los productos.');
+            });
+    </script>
+
+    
+<br><br><br><br>
+
+</body>
+
+<footer class="footer-contact">
+    <a class="footer-link" href="index.html">Belu Melamed - La Pastelería</a>
+    <a class="footer-link" href="contacto.html">Contacto</a>
+    <a class="footer-link" href="https://www.instagram.com/belumelamed_lapasteleria/" target="_blank">
+        <span class="fab fa-instagram"></span> </a>
+    <a class="footer-link" href="https://www.facebook.com/belumelamedpatissiere" target="_blank">
+        <span class="fab fa-facebook"></span>
+    </a>
+    </div>
+    <div class="footer-right">
+        <span><a class="footer-link" href="admin.html">Admin</a></span>
+    </div>
+
+</footer>
+
+</html>

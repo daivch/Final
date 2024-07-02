@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- enlace a estilos -->
+    <link rel="stylesheet" href="./static/css/styles.css">
+
+    <!-- Favicon de la página -->
+    <link rel="icon" type="image/fx-icon" href="./static/imagenes/Logo.png">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Sacramento&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic" rel="stylesheet"
+        type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700" rel="stylesheet" type="text/css">
+
+    <!-- Font Awesome icons -->
+    <script src="https://kit.fontawesome.com/6e76b34b0b.js" crossorigin="anonymous"></script>
+    <style>
+        body {
+            background-image: url('./img/preparacio-tortas.jpg');
+            background-size: cover;
+            background-color: rgba(255, 255, 255, 0.8);
+            background-blend-mode: overlay;
+            background-repeat: no-repeat;
+        }
+    </style>
+    <title>Torta Personalizada</title>
+</head>
+
+<body>
+    <header class="header">
+        <nav class="nav-bar">
+            <ul class="nav-bar-links">
+                <li>
+                    <a href="index.html">
+                        <img class="logo-nav" src="img/logo-nav.png" alt="">
+                    </a>
+                </li>
+                <li>
+                    <a href="index.html" class="nav-link">Inicio</a>
+                    <a href="index.html" class="nav-logo-link">
+                        <img src="img/home-logo.svg" alt="" class="nav-logo">
+                    </a>
+                </li>
+                <li>
+                    <a href="hacerpedido.html" class="nav-link">Hacé tu pedido</a>
+                    <a href="hacerpedido.html" class="nav-logo-link">
+                        <img src="img/pedido-logo.svg" alt="" class="nav-logo">
+                    </a>
+                </li>
+                <li>
+                    <a href="productos.html" class="nav-link">Productos</a>
+                    <a href="productos.html" class="nav-logo-link">
+                        <img src="img/products-logo.svg" alt="" class="nav-logo">
+                    </a>
+                </li>
+                <li>
+                    <a href="nosotros.html" class="nav-link">Nosotros</a>
+                    <a href="nosotros.html" class="nav-logo-link">
+                        <img src="img/sobre-nosotros-logo.svg" alt="" class="nav-logo">
+                    </a>
+                </li>
+                <li>
+                    <a href="contacto.html" class="nav-link">Contacto</a>
+                    <a href="contacto.html" class="nav-logo-link">
+                        <img src="img/contacto-logo.svg" alt="" class="nav-logo">
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <BR><BR><BR>
+
+        <form id="Formulario" onsubmit="return validarFormulario()">
+            <div class="formtorta">
+                <h1>Personaliza tu Torta<br><br></h1>
+            </div>
+            <div class="formtorta">
+                <h4>AQUÍ PODRÁS ECHAR A VOLAR TU IMAGINACIÓN, DESDE EL DISEÑO HASTA EL RELLENO. SI TIENES ALGUNA
+                    TEMÁTICA,
+                    COLOR FAVORITO, ALGO QUE TE IDENTIFIQUE, PODES SUBIR UNA FOTO. PODEMOS HACER LA DECORACIÓN EN TORNO
+                    A
+                    ESO. EN CUANTO AL RELLENO PODES ELEGIR ENTRE LAS DISTINTAS OPCIONES EL RELLENO Y EL TOPPING QUE MÁS
+                    TE
+                    GUSTE. ¡ATRÉVETE!</H4>
+            </div>
+            <div class="grid-container" id="personalizacion">
+
+                <!-- Opción para elegir la forma de la torta -->
+                <div class="grid-item">
+
+                    <h2>Forma de la Torta</h2>
+                    <br><br>
+                    <div id="opciones-forma" class="opciones">
+                        <!-- Opciones para la forma de la torta -->
+                        <h3>Cuadrada</h3>
+                        <label><input type="radio" name="forma" value="cuadrada"></label>
+                        <h3>Redonda</h3>
+                        <label><input type="radio" name="forma" value="redonda"></label>
+                        <h3>Rectangular</h3>
+                        <label><input type="radio" name="forma" value="rectangular"></label>
+                    </div>
+                </div>
+                <!-- Opción para elegir la cantidad de capas -->
+                <div class="grid-item">
+                    <h2>Cantidad de Capas</h2>
+                    <br><br>
+                    <div id="opciones-capas" class="opciones">
+                        <!-- Opciones para la cantidad de capas -->
+                        <select name="capas">
+                            <option value="1">1 Capa</option>
+                            <option value="2">2 Capas</option>
+                            <option value="3">3 Capas</option>
+                        </select>
+
+                    </div>
+                </div>
+                <!-- Opción para elegir el tipo de bizcochuelo -->
+                <div class="grid-item">
+                    <h2>Tipo de Bizcochuelo</h2>
+                    <br><br>
+                    <div id="opciones-bizcochuelo" class="opciones">
+                        <!-- Opciones para el tipo de bizcochuelo -->
+                        <h3>Chocolate</h3>
+                        <label><input type="radio" name="bizcochuelo" value="chocolate"></label>
+                        <h3>Vainilla</h3>
+                        <label><input type="radio" name="bizcochuelo" value="vainilla"></label>
+                        <h3>Celiacos</h3>
+                        <label><input type="radio" name="bizcochuelo" value="celiacos"></label>
+                    </div>
+                </div>
+                <!-- Opción para elegir el relleno -->
+                <div class="grid-item">
+                    <h2>Relleno</h2>
+                    <br><br>
+                    <div id="opciones-relleno" class="opciones">
+                        <!-- Opciones para el relleno -->
+                        <h3>Mousse de Chocolate</h3>
+                        <label><input type="radio" name="relleno" value="mousse-chocolate"></label>
+                        <h3>Mousse de Limon</h3>
+                        <label><input type="radio" name="relleno" value="mousse-limon"></label>
+                        <h3>Dulce de Leche y Praline</h3>
+                        <label><input type="radio" name="relleno" value="dulce-leche-praline"></label>
+                        <h3>Crema Chantilli y Duraznos</h3>
+                        <label><input type="radio" name="relleno" value="crema-chantilli-duraznos"></label>
+                        <h3>Mousse de Frutilla</h3>
+                        <label><input type="radio" name="relleno" value="mousse-frutilla"></label>
+                        <h3>Crema Chantilli con Frutillas</h3>
+                        <label><input type="radio" name="relleno" value="crema-chantilli-frutillas"></label>
+                    </div>
+                </div>
+                <!-- Opción para elegir la cobertura -->
+                <div class="grid-item">
+                    <h2>Cobertura</h2>
+                    <br><br>
+                    <div id="opciones-cobertura" class="opciones">
+                        <!-- Opciones para la cobertura -->
+                        <h3>Chocolate</h3>
+                        <label><input type="radio" name="cobertura" value="chocolate"></label>
+                        <h3>Merengue</h3>
+                        <label><input type="radio" name="cobertura" value="merengue"></label>
+                        <h3>Masapan</h3>
+                        <label><input type="radio" name="cobertura" value="masapan"></label>
+
+                    </div>
+                </div>
+                <!-- Opción para elegir el diseño -->
+                <div class="grid-item">
+                    <h2>Diseño</h2>
+                        <br><br>
+                        <div id="opciones-diseno" class="opciones">
+                            <!-- Opciones para el diseño -->
+                            <h3>Cumpleaños Niña</h3>
+                            <label><input type="radio" name="diseno" value="cumpleanos-nina"></label>
+                            <h3>Cumpleaños Niño</h3>
+                            <label><input type="radio" name="diseno" value="cumpleanos-nino"></label>
+                            <h3>Cumpleaños Adultos</h3>
+                            <label><input type="radio" name="diseno" value="cumpleanos-adulto"></label>
+
+                        </div>
+                </div>
+            </div>
+           
+            <div id="resultado">
+                <!-- Aquí se mostrará la torta personalizada -->
+            </div>
+            <div class="Datos">
+                <h2>Ingrese su información de Contacto</h2>
+                <!--Aca empesaba el formulario-->
+                <label for="imagen">Si tenes una foto de tu motivo podes subirla acá!</label><br>
+                <input type="file" name="imagen" id="imagen" required>
+                <br><br>
+                <label for="nombre">Nombre:</label>
+                <input type="text" id="nombre" name="nombre" required><br>
+
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required><br>
+
+                <label for="numero">Nro Movil</label>
+                <input type="tel" id="numero" name="numero" required><br>
+
+                <label for="fentrega">Fecha de entrega:</label>
+                <input type="date" id="fentrega" name="fentrega" required><br>
+
+                <br>
+                <input id="Enviar" type="submit" value="Enviar">
+                <!--Aca terminaba-->
+            </div>
+            <div id="mensajeError" class="mensaje-error"></div>
+        </Form>
+        <br><br><br><br><br>
+        <script src="./Formulario/pedido.js"></script>
+
+    </main>
+    <footer class="footer-contact">
+        <a class="footer-link" href="index.html">Belu Melamed - La Pastelería</a>
+        <a class="footer-link" href="contacto.html">Contacto</a>
+        <a class="footer-link" href="https://www.instagram.com/belumelamed_lapasteleria/" target="_blank">
+            <span class="fab fa-instagram"></span> </a>
+        <a class="footer-link" href="https://www.facebook.com/belumelamedpatissiere" target="_blank">
+            <span class="fab fa-facebook"></span>
+        </a>
+        </div>
+        <div class="footer-right">
+            <span><a class="footer-link" href="admin.html">Admin</a></span>
+        </div>
+    
+    </footer>
+</body>
+
+</html>

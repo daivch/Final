@@ -1,0 +1,1161 @@
+:root {
+    --background-color: white;
+    --nav-background-color: navy;
+    --nav-links-color: white;
+    --nav-links-hover: lightblue;
+    --muestra-product-detail-color: navy;
+    --product-item-detail-title-color: white;
+    --product-item-detail-subtitle-color: white;
+    --texts: #2424bb;
+  }
+  
+  * {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+  }
+  
+
+
+  body {
+    background-color: var(--background-color);
+    font-family: "Roboto Slab", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    color: #212529;
+    text-align: left;
+    overflow-y: scroll;
+  
+  }
+  
+  /* Header */
+  .header {
+    background-color: transparent;
+    /* dejar la barra de navegación fija */
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    /* Que quede por encima de otros objetos */
+    z-index: 9999;
+  }
+  
+  /* Footer */
+  .footer {
+    background-color: var(--nav-background-color);
+    height: 64px;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    list-style: none;
+    align-items: center;
+    position: relative;
+    bottom: 0;
+    margin-top: 1vh;
+  }
+  
+  .footer-link {
+    color: var(--nav-links-color);
+    text-decoration: none;
+    margin-right: 24px;
+    margin-left: 2%;
+    display: flex;
+    flex-direction: row;
+    list-style: none;
+    align-items: center;
+  }
+  
+  .footer-link .fab {
+    font-size: 24px;
+    margin-right: 5px;
+  }
+  
+  .footer-right {
+    margin-left: auto; /* para el link admin */
+}
+
+  /* Barra de navegación */
+  .nav-bar {
+    background-color: var(--nav-background-color);
+    height: 64px;
+    width: 100%;
+    display: flex;
+  }
+  
+  .nav-link {
+    color: var(--nav-links-color);
+    text-decoration: none;
+    margin-right: 24px;
+  }
+  
+  .nav-bar-links {
+    margin-left: 2%;
+    display: flex;
+    flex-direction: row;
+    list-style: none;
+    align-items: center;
+  }
+  
+  .logo-nav {
+    max-height: 64px;
+    margin-right: 10px;
+  }
+
+
+  /*Estilo para título pastelería - index*/
+  .marca {
+    margin-top: 150px;
+    text-align: center;
+    color: var(--texts);
+    font-size: 5.25rem;
+    font-weight: 700;
+    line-height: 3.75rem;
+    margin-bottom: 1rem;
+    object-fit: cover;
+    -o-object-fit: cover;
+    font-family: "Sacramento", cursive, "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  }
+  
+  .subtitulo {
+    text-align: center;
+    font-weight: bold;
+    margin-bottom: 1.5rem;
+    font-size: 1.75rem;
+    color: var(--texts);
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+   
+  }
+  
+  .local-img {
+    display: block;
+    margin: auto; 
+    margin-top: 20px; 
+    margin-bottom: 20px; 
+    max-width: 100%; 
+    height: auto; 
+    border: #2424bb;
+    border-radius: 10px;
+  }
+  
+  /* Extra small devices (phones, 600px and down) */
+  @media only screen and (max-width: 650px) {
+    .marca {
+        font-size: 3rem; 
+        line-height: 2.5rem; 
+        margin-top: 100px; 
+    }
+  .subtitulo {
+      font-size: 1.35rem; 
+    }
+  .local-img {
+    max-width: 100%;
+  }}
+  
+  /* Muestra de productos */
+  /* Titulo */
+  .product-page-title {
+    width: 60%;
+    margin: auto;
+    text-align: center;
+    margin-top: 10px;
+    color: #2424bb;
+  }
+  
+  /* Grid */
+  .grid-catalogo {
+    padding: 1%;
+    margin: 0% 5%;
+    margin-bottom: 2rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    grid-auto-rows: auto;
+    gap: 2% 1%;
+    width: 90%;
+  }
+  
+  .grid-catalogo-item {
+    overflow: hidden;
+    position: relative;
+    width: 96%;
+    height: 96%;
+    font-size: 20px;
+    cursor: pointer;
+    transition: all 150ms;
+    -webkit-transform-origin: center left;
+    transform-origin: center left;
+    text-align: center;
+    padding: 0px;
+  
+  }
+  
+  .muestra-grid-img {
+    padding: 0px;
+    margin: 0px;
+    width: 100%;
+    max-width: 333px;
+    max-height: 500px;
+    min-width: 60%;
+    min-height: 90%;
+    height: 100%;
+  }
+  
+  .muestra-product-detail {
+    bottom: -100%;
+    padding: 30px;
+    max-height: 100%;
+    overflow: auto;
+    line-height: 15px;
+    position: absolute;
+    background-color: var(--muestra-product-detail-color);
+    box-sizing: border-box;
+    transition: bottom 0.5s ease-in-out;
+    width: 100%;
+  }
+  
+  /* estilo para el titulo de las peliculas */
+  .product-item-detail-title {
+    color: var(--product-item-detail-title-color);
+    margin: 5px 0px 0px 0px;
+    line-height: 1.2em;
+  }
+  
+  /* estilo para el subtitulo de las peliculas */
+  .product-item-detail-subtitle {
+    color: var(--product-item-detail-title-color);
+    font-size: 13px;
+    margin: 3px 0px;
+  }
+  
+  
+  .grid-catalogo-item:hover {
+    opacity: 0.9;
+  }
+  
+  .grid-catalogo-item:hover .muestra-product-detail {
+    bottom: 0;
+  }
+  
+  /* Extra small devices (phones, 600px and down) */
+  @media only screen and (max-width: 650px) {
+    .grid-catalogo {
+  
+      grid-template-columns: 1fr 1fr;
+  
+    }
+  }
+  
+  @media only screen and (min-width: 650px) {
+    .grid-catalogo {
+  
+      grid-template-columns: 1fr 1fr;
+  
+    }
+  }
+  
+  /* Small devices (portrait tablets and large phones, 600px and up) */
+  @media only screen and (min-width: 700px) {
+    .grid-catalogo {
+  
+      grid-template-columns: 1fr 1fr 1fr;
+  
+    }
+  }
+  
+  /* Medium devices (landscape tablets, 768px and up) */
+  @media only screen and (min-width: 768px) {
+    .grid-catalogo {
+  
+      grid-template-columns: 1fr 1fr 1fr;
+  
+    }
+  }
+  
+  /* Large devices (laptops/desktops, 992px and up) */
+  @media only screen and (min-width: 992px) {
+    .grid-catalogo {
+  
+      grid-template-columns: 1fr 1fr 1fr 1fr;
+     
+    }
+  }
+  
+  /* Extra large devices (large laptops and desktops, 1200px and up) */
+  @media only screen and (min-width: 1200px) {
+    .grid-catalogo {
+  
+      grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+      
+    }
+  }
+  
+  /* Hovers */
+  .nav-link:hover {
+    color: var(--nav-links-hover);
+    font-weight: bold;
+  }
+  
+  .footer-link:hover {
+    color: var(--nav-links-hover);
+    font-weight: bold;
+  }
+  
+  /* Estilo para la sección Contacto */
+  
+  .footer-contact {
+    background-color: var(--nav-background-color);
+    height: 64px;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    list-style: none;
+    align-items: center;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    z-index: 1000;
+  }
+  
+  .main-content {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    /* Para asegurar que el contenido ocupe al menos toda la altura de la pantalla */
+    flex-wrap: wrap;
+    /* Permite que los elementos se ajusten al tamaño del contenedor */
+  }
+  
+  .contact-container {
+    align-items: center;
+    /* Centrar horizontalmente los elementos */
+    justify-content: center;
+    /* Centrar verticalmente los elementos */
+    display: flex;
+    flex-grow: 1;
+    /* Permite que el contenido del medio crezca para ocupar el espacio disponible */
+  
+  }
+  
+  .contact {
+    width: 35%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  
+  }
+  
+  .contact-map {
+    margin-top: 20px;
+    border: 2px solid;
+    color: var(--texts);
+    /* Color y grosor del borde */
+    border-radius: 10px;
+    /* Radio de las esquinas redondeadas */
+    overflow: hidden;
+    /* Para que el borde no se solape con el mapa */
+    display: block;
+  }
+  
+  .map {
+    border: 0;
+    width: 300px;
+    height: 250px;
+  }
+  
+  .contact-title {
+    font-size: 12px;
+    color: var(--texts);
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  
+  }
+  
+  .redes-sociales {
+    margin: 10px 5px;
+  }
+  
+  .rrss-logos-links {
+    text-decoration: none;
+    margin-right: 10px;
+  }
+  
+  .nombre {
+    font-family: "Sacramento";
+    font-size: 40px;
+  
+  }
+  
+  .contact-data {
+    font-size: 16px;
+    justify-content: space-between;
+    flex-direction: column;
+    display: flex;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  }
+  
+  
+  .contact-btn {
+    align-items: center;
+    background-color: none;
+    background: var(--nav-background-color);
+    border: none;
+    border-radius: 5px;
+    color: white;
+    content: none;
+    cursor: pointer;
+    display: flex;
+    font-size: 18px;
+    height: 44px;
+    justify-content: center;
+    outline: none;
+    text-decoration: none;
+    text-transform: uppercase;
+    width: 171px;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  }
+  
+  @media screen and (max-width: 768px) {
+    .contact-container {
+      flex-direction: column;
+      align-items: flex-start;
+    
+    }
+  
+    .contact {
+      width: 80%;
+      margin-bottom: 20px;
+    
+    }
+  }
+  
+  .contact-container {
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    flex-grow: 1;
+  
+  }
+  
+  /* Media query para dispositivos con un ancho máximo de 650px */
+  @media only screen and (max-width: 650px) {
+    .contact-title h1 {
+        display: flex; 
+        flex-direction: column; 
+        align-items: center; 
+    }
+  
+     .contact-title {
+        font-size: 0.45rem; 
+        font-weight: bold; 
+    }
+  
+    /* Oculta el guión "-" solo en la media query max-width 650px */
+    .separador {
+        display: none; 
+    }
+  }
+  
+  /* EStilos para la sección Nosotros */
+  .us {
+    max-width: 1200px;
+    margin: 120px auto;
+  
+  }
+  
+  .us-heading-h2 {
+    font-size: 40px;
+    margin-top: 0;
+    margin-bottom: 16px;
+    font-family: "Roboto", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    color: var(--texts);
+  }
+  
+  .us-heading-h3 {
+    font-size: 16px;
+    font-weight: 400;
+    font-style: italic;
+    font-family: "Droid Serif", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    margin-bottom: 64px;
+    color: var(--texts);
+  }
+  
+  .timeline {
+    position: relative;
+    padding: 0;
+    list-style: none;
+  }
+  
+  .timeline:before {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 40px;
+    width: 2px;
+    margin-left: -1.5px;
+    content: "";
+    background-color: #e9ecef;
+  }
+  
+  .timeline>li {
+    position: relative;
+    min-height: 50px;
+    margin-bottom: 50px;
+  
+  }
+  
+  .timeline>li:after,
+  .timeline>li:before {
+    display: table;
+    content: " ";
+  }
+  
+  .timeline>li:after {
+    clear: both;
+  }
+  
+  .timeline>li .timeline-panel {
+    position: relative;
+    float: right;
+    width: 100%;
+    padding: 0 20px 0 100px;
+    text-align: left;
+  }
+  
+  .timeline>li .timeline-panel:before {
+    right: auto;
+    left: -15px;
+    border-right-width: 15px;
+    border-left-width: 0;
+  }
+  
+  .timeline>li .timeline-panel:after {
+    right: auto;
+    left: -14px;
+    border-right-width: 14px;
+    border-left-width: 0;
+  }
+  
+  .timeline>li .timeline-image {
+    position: absolute;
+    z-index: 100;
+    left: 0;
+    width: 80px;
+    height: 80px;
+    margin-left: 0;
+    text-align: center;
+    color: #e9ecef;
+    border: 7px solid;
+    color: var(--texts);
+    border-radius: 100%;
+    background-color: #e9ecef;
+  }
+  
+  .timeline>li .timeline-image h4 {
+    font-size: 10px;
+    line-height: 14px;
+    margin-top: 12px;
+  }
+  
+  .timeline>li.timeline-inverted>.timeline-panel {
+    float: right;
+    padding: 0 20px 0 100px;
+    text-align: left;
+  }
+  
+  .timeline>li.timeline-inverted>.timeline-panel:before {
+    right: auto;
+    left: -15px;
+    border-right-width: 15px;
+    border-left-width: 0;
+  }
+  
+  .timeline>li.timeline-inverted>.timeline-panel:after {
+    right: auto;
+    left: -14px;
+    border-right-width: 14px;
+    border-left-width: 0;
+  }
+  
+  .timeline>li:last-child {
+    margin-bottom: 0;
+  }
+  
+  .timeline .timeline-heading h4 {
+    margin-top: 0;
+    color: inherit;
+  }
+  
+  .timeline .timeline-heading h4.subheading {
+    text-transform: none;
+  }
+  
+  .timeline .timeline-body>ul,
+  .timeline .timeline-body>p {
+    margin-bottom: 0;
+  }
+  
+  @media (min-width: 768px) {
+    .timeline:before {
+      left: 50%;
+    }
+  
+    .timeline>li {
+      min-height: 100px;
+      margin-bottom: 100px;
+    }
+  
+    .timeline>li .timeline-panel {
+      float: left;
+      width: 41%;
+      padding: 0 20px 20px 30px;
+      text-align: right;
+    }
+  
+    .timeline>li .timeline-image {
+      left: 50%;
+      width: 100px;
+      height: 100px;
+      margin-left: -50px;
+    }
+  
+    .timeline>li .timeline-image h4 {
+      font-size: 13px;
+      line-height: 18px;
+      margin-top: 16px;
+    }
+  
+    .timeline>li.timeline-inverted>.timeline-panel {
+      float: right;
+      padding: 0 30px 20px 20px;
+      text-align: left;
+    }
+  }
+  
+  .rounded-circle {
+    border-radius: 50% !important;
+  }
+  
+  .img-fluid {
+    max-width: 100%;
+    height: auto;
+  }
+  
+  .text-left {
+    text-align: left !important;
+  }
+  
+  .text-right {
+    text-align: right !important;
+  }
+  
+  .text-center {
+    text-align: center !important;
+  }
+  
+  .text-muted {
+    font-family: "Roboto", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    font-style: italic;
+    font-size: 12px;
+    margin-bottom: 10px;
+  }
+
+  
+  h4 {
+    margin-bottom: 16px;
+    font-family: "Droid", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    font-weight: 750;
+    line-height: 1;
+  }
+  
+  
+  /* Oculta logos del navbar y muestra texto a partir de 600px*/
+  @media screen and (min-width: 600px) {
+    .nav-link {
+      display: inline;
+    }
+  
+    .nav-bar-links{
+      display: flex;
+      justify-content: space-evenly;
+      width: 100%;
+    }
+  
+    .nav-logo-link {
+      display: none;
+    }
+  
+  }
+  
+  /* Oculta texto del navbar y muestra los logos hasta 600px */
+  @media screen and (max-width: 600px) {
+    .nav-link {
+      display: none;
+    }
+  
+  
+  
+    .nav-bar-links{
+      display: flex;
+      justify-content: space-evenly;
+      width: 100%;
+    }
+  
+    /* Al ser logos svg(es decir, vectoriales) es necesario darles el tamaño a mano */
+    .nav-logo {
+      width: 30px;
+      height: 30px;
+      margin-right: 30px;
+    }
+  
+  }
+  
+  
+  /* Logo nav queda igual en cualquier dispositivo */
+  
+  .logo-nav{
+    padding: 1%;
+  }
+  
+  .productos-inicio {
+    font-size: larger;
+    margin-bottom: 2vw;
+    text-align: center;
+    color: var(--texts);
+    margin-top: 50px;
+  }
+  
+  
+  /* Contenedor para que las cartas de la pagina inicio se muestren en formato GRID */
+  .grid-card-container {
+    width: 90%;
+    height: 500px;
+    display: grid;
+    grid-template-columns: 25% 25% 25%;
+    gap: 5%;
+    margin: 30px auto;
+    justify-content: center;
+  }
+  
+  /* Contenedor de las cartas de la pagina de inicio */
+  .product-card-container {
+    max-height: 500px;
+  
+  }
+  
+  /* Estilo de la carta */
+  .card {
+    max-height: 100%;
+    background-color: var(--background-color);
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+  }
+  
+  /* Estilo de la imagen de la carta */
+  .card img {
+    width: 100%;
+    height: 400px;
+  }
+  
+  /* Estilo de el contenido de la carta */
+  .card-content {
+    padding: 16px;
+  }
+  
+  /* Estilo de el titulo de el contenido de la carta */
+  .card-content h3 {
+    font-size: 28px;
+    margin-bottom: 8px;
+  }
+  
+  /* Estilo del texto del contenido de la carta */
+  .card-content p {
+    font-size: 14px;
+    line-height: 1.3;
+  }
+  
+  /* Extra small devices (phones, 650px and down) */
+  @media only screen and (max-width: 650px) {
+    .grid-card-container {
+      /* background-color: aqua; */
+      grid-template-columns: 70%;
+      grid-row: 30% 30% 30%;
+      height: 1600px;
+      gap: 0%;
+  
+    }
+  
+    .product-card-container {
+      max-height: 500px;
+      margin-top: 10px;
+      margin-bottom: 0;
+    }
+  
+    .titulo-grande{
+      display: none;
+    }
+  
+    .titulo-chico{
+      display: inline;
+    }
+  }
+  
+  @media only screen and (min-width: 650px) {
+    .grid-card-container {
+  
+      grid-template-columns: 40% 40%;
+    }
+    .titulo-grande{
+      display: inline;
+    }
+  
+    .titulo-chico{
+      display: none;
+    }
+  }
+  
+  /* Small devices (portrait tablets and large phones, 600px and up) */
+  @media only screen and (min-width: 700px) {
+    .grid-card-container {
+  
+      grid-template-columns: 25% 25% 25%;
+    }
+  }
+  
+  /* Medium devices (landscape tablets, 768px and up) */
+  @media only screen and (min-width: 768px) {
+    .grid-card-container {
+      grid-template-columns: 25% 25% 25%;
+    }
+  }
+  
+  /* Large devices (laptops/desktops, 992px and up) */
+  @media only screen and (min-width: 992px) {
+    .grid-card-container {
+      grid-template-columns: 25% 25% 25%;
+    }
+  }
+  
+  /* Extra large devices (large laptops and desktops, 1200px and up) */
+  @media only screen and (min-width: 1200px) {
+    .grid-card-container {
+  
+      grid-template-columns: 25% 25% 25%;
+    }
+  }
+  
+  /* Estilo para cuadrar el boton de link a pedidos */
+  .boton-pedidos-inicio {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 3vw;
+    margin-bottom: 3vw;
+  }
+  
+  /* Estilos de el boton */
+  .boton-pedidos-inicio a {
+    text-decoration: none;
+    background-color: navy;
+    padding: 1vw;
+    border-radius: 5%;
+    color: white;
+  }
+  
+  /* Estilos de el boton cuando esta en hover */
+  .boton-pedidos-inicio a:hover {
+    text-decoration: none;
+    background-color: navy;
+    padding: 1vw;
+    border-radius: 5%;
+    color: var(--nav-links-hover);
+  }
+  
+  .boton-anchor{
+    display: block;
+    width: fit-content;
+    align-self: center;
+    text-decoration: none;
+    background-color: navy;
+    color: white;
+    padding: 10px;
+    border-radius: 10%;
+    margin: 10px;
+  }
+  
+  .nosotros-inicio {
+    margin: 3vw;
+    padding: 2vw;
+    text-align: center;
+    color: var(--texts);
+    display: flex;
+    flex-direction: column;
+    border-bottom:8px solid navy ;
+    border-top:8px solid navy ;
+  }
+  
+  .nosotros-inicio p{
+    margin-top: 10px;
+    color: #212529;
+  }
+  
+  .contacto-inicio {
+    margin: 3vw;
+    padding: 2vw;
+    text-align: center;
+    color: var(--texts);
+    display: flex;
+    flex-direction: column;
+  
+  }
+  
+  .contacto-inicio p {
+    margin-top: 10px;
+    color: #212529;
+  
+  }
+  
+  .Personalizada-page-warning {
+    background-color: lightcyan;
+    color: red;
+    width: 60%;
+    margin: auto;
+    text-align: right;
+    margin-top: 10px;
+  }
+  
+  .lista-tipo-torta {
+    background-color: rgb(226, 224, 255);
+    color: rgb(11, 2, 2);
+    font-size: 28px;
+    width: 80%;
+    margin: auto;
+    text-align: right;
+    margin-top: 20px;
+  }
+  
+  
+  .IMG-Perso {
+    justify-content: left;
+    width: 100px;
+    height: 100px;
+  
+  }
+  
+  body {
+    background-image: url('img/preparacio-tortas.jpg');
+    background-size: cover; /* Ajusta la imagen para que cubra todo el contenedor */
+    background-repeat: no-repeat; /* No repite la imagen */
+    background-position: center; /* Centra la imagen */
+    background-color: rgba(255, 255, 255, 0.8); 
+    font-family: "Roboto", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    margin: 0;
+    padding: 20px;
+  }
+  /*Desde acá agregué*/
+  
+  .contenedor-centrado {
+    display:flex;
+    width: 100%;
+    justify-content: center;
+}
+
+.logo-centrado{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 5px;
+    margin-top: 120px;
+}
+
+form {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: navy;
+    border: 1px solid lightslategray;
+    border-radius: 5px;
+    box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.5);
+}
+
+table {
+    max-width: 90%;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: navy;
+    border: 1px solid lightslategray;
+    border-radius: 5px;
+    box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.5);
+    color: white;
+}
+
+th, td, tr {
+    padding: 10px;
+    text-align: center; 
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    color: white;
+}
+
+input[type="text"],
+input[type="number"],
+textarea {
+    width: 90%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #cccccc;
+    border-radius: 5px;
+}
+
+input[type="submit"] {
+    padding: 10px;
+    background-color: #2424bb;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+input[type="submit"]:hover {
+    background-color: #2424bb;
+}
+
+button {
+    padding: 8px;
+    margin:4px;
+    background-color: #2424bb;
+    color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #2424bb;
+}
+
+a {
+    padding: 6px;
+    margin:4px;
+    background-color: navy;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    text-decoration: none;
+ 
+}
+
+
+  h1 {
+    text-align: center;
+  }
+  
+  .grid-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    grid-gap: 10px;
+    justify-content: center;
+  }
+  
+  .grid-item {
+    text-align: center;
+  }
+  
+    
+  .formulario {
+   margin-top: 50px;
+    text-align: center;
+  }
+
+  select {
+    font-size: 28px; /* Tamaño de la fuente */
+    padding: 10px; /* Espaciado interno */
+    border: 5px solid #e4ead8; /* Borde azul */
+    border-radius: 15px; /* Bordes redondeados */
+    background-color: #81b9f0; /* Color de fondo */
+    color: #495057; /* Color del texto */
+    appearance: none; /* Quitar el estilo por defecto */
+    cursor: pointer; /* Cambiar el cursor al pasar sobre el select */
+  }
+  option {
+    font-size: 15px; /* Tamaño de la fuente para las opciones */
+    padding: 10px; /* Espaciado interno para las opciones */
+  }
+  
+  
+  h2 {
+    margin-bottom: 10px;
+    color: #2424bb;
+  }
+  
+  h3 {
+    margin-bottom: 10px;
+    color: #2498bb;
+    size: 9px;
+  }
+  
+  .formtorta h1 {
+    margin: auto;
+    text-align: center;
+    margin-top: 10px;
+    color: #2424bb;
+   
+  }
+  
+  .formtorta h4 {
+    color: white;
+    size: 30px;
+    padding: 20px;
+    background-color: navy;
+    border: #2424bb;
+    border-radius: 10px;
+    display: inline-block; 
+    text-align: center;
+    margin-top: -25px;
+    margin-bottom: 15px;
+  }
+  
+  label,
+  input[type="email"],
+  input[type="text"],
+  input[type="tel"],
+  input[type="DATE"],
+  input[type="submit"] {
+    display: block;
+    margin-bottom: 10px;
+  }
+  
+  input[type="email"],
+  input[type="text"],
+  input[type="tel"],
+  input[type="DATE"],
+  input[type="submit"] {
+    vertical-align: center;
+    align-content: center;
+    width: 35%;
+    padding: 5px;
+    box-sizing: border-box;
+  }
+  
+  input[type="submit"] {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .enviar input[type="submit"]:hover {
+    background-color: #45a049;
+  }
+  
+  /* Estilo para las opciones de cantidad de capas */
+  #opciones-capas label {
+    display: block; /* Mostrar cada opción en un bloque separado */
+    margin-bottom: 10px; /* Espacio entre cada opción */
+  }
+  
+  .mensaje-error {
+    color: red;
+    font-size: 20PX;
+    font-weight: bold;
+    margin-bottom: 20px;
+  }
